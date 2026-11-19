@@ -1,0 +1,164 @@
+{
+  "project": "Retail Sales Performance Analysis",
+  "seed": 42,
+  "schema_source": "docs/08_Database_Design.xlsx | SQLite_DDL",
+  "validation_status": "PASS",
+  "expected_row_counts": {
+    "dim_product": 20,
+    "dim_store": 10,
+    "fact_sales": 240,
+    "fact_sales_target": 4800
+  },
+  "actual_database_row_counts": {
+    "dim_product": 20,
+    "dim_store": 10,
+    "fact_sales": 240,
+    "fact_sales_target": 4800
+  },
+  "foreign_key_check": {
+    "status": "PASS",
+    "enforcement_enabled_on_generator_connection": true,
+    "violations": []
+  },
+  "range_and_key_checks": {
+    "product_prices_nonnegative": true,
+    "sales_dates_valid_and_in_range": true,
+    "sales_quantity_positive": true,
+    "sales_prices_costs_nonnegative": true,
+    "discount_between_zero_and_0_80": true,
+    "returns_and_active_flags_binary": true,
+    "targets_valid_month_and_nonnegative": true,
+    "allowed_categories_segments_payments_regions": true,
+    "required_columns_not_null": true,
+    "primary_and_unique_keys": true
+  },
+  "joined_view": {
+    "name": "vw_sales_analysis",
+    "rows": 240,
+    "column_count": 35,
+    "columns": [
+      "sales_line_id",
+      "order_id",
+      "sale_date",
+      "product_id",
+      "sku",
+      "product_name",
+      "category",
+      "subcategory",
+      "list_price",
+      "standard_unit_cost",
+      "store_id",
+      "store_code",
+      "store_name",
+      "region",
+      "city",
+      "customer_segment",
+      "payment_method",
+      "quantity",
+      "unit_price_at_sale",
+      "unit_cost_at_sale",
+      "discount_pct",
+      "gross_revenue",
+      "discount_amount",
+      "net_revenue",
+      "line_cost",
+      "profit_amount",
+      "margin_pct",
+      "return_flag",
+      "sales_month",
+      "calendar_year",
+      "month_number",
+      "month_name",
+      "calendar_quarter",
+      "target_month",
+      "monthly_target"
+    ]
+  },
+  "raw_quality_issues": {
+    "missing_payment_method_cells": 6,
+    "missing_rate_by_sales_rows_pct": 2.5,
+    "missing_sales_line_ids": [
+      14,
+      23,
+      70,
+      102,
+      170,
+      188
+    ],
+    "imputation_for_database": {
+      "field": "payment_method",
+      "method": "mode of observed raw payment_method values",
+      "value": "UPI"
+    },
+    "duplicate_business_groups": [
+      [
+        8,
+        238
+      ],
+      [
+        79,
+        239
+      ],
+      [
+        153,
+        240
+      ]
+    ],
+    "duplicate_group_count": 3,
+    "valid_range_statistical_outliers": [
+      {
+        "sales_line_id": 44,
+        "unit_price_at_sale": 3602.97,
+        "list_price": 857.85,
+        "ratio_to_list_price": 4.2
+      },
+      {
+        "sales_line_id": 101,
+        "unit_price_at_sale": 6069.55,
+        "list_price": 1264.49,
+        "ratio_to_list_price": 4.8
+      },
+      {
+        "sales_line_id": 222,
+        "unit_price_at_sale": 140007.34,
+        "list_price": 25455.88,
+        "ratio_to_list_price": 5.5
+      }
+    ]
+  },
+  "patterns_intentionally_built_in": [
+    "2024 sales use a modest year-over-year quantity and price uplift.",
+    "November and December have higher unit volumes and a larger Electronics share.",
+    "North and West store sales have higher propensity than other regions.",
+    "Discounts are more frequent in March, July, and August; greater discounts mechanically reduce calculated gross margin."
+  ],
+  "observed_pattern_metrics": {
+    "net_revenue_by_year_inr": {
+      "2023": 833695.31,
+      "2024": 1184141.66
+    },
+    "net_revenue_yoy_change_pct": 42.0,
+    "q4_average_net_revenue_per_line_inr": 20176.92,
+    "non_q4_average_net_revenue_per_line_inr": 4741.82,
+    "q4_sales_line_count": 57,
+    "non_q4_sales_line_count": 183,
+    "q4_electronics_share_of_net_revenue_pct": 88.9,
+    "non_q4_electronics_share_of_net_revenue_pct": 57.7,
+    "sales_line_count_by_region": {
+      "Central": 49,
+      "East": 41,
+      "North": 59,
+      "South": 41,
+      "West": 50
+    },
+    "discount_vs_margin_pearson_correlation": -0.52,
+    "interpretation_note": "Generated signals are descriptive; 240 lines and three intentional price outliers do not support causal claims."
+  },
+  "notes": [
+    "CSV and Excel contain raw synthetic rows; six payment_method cells are blank for cleaning practice.",
+    "SQLite uses the exact Step 8 NOT NULL schema and imputes only those six blank payment_method values using the observed mode.",
+    "Three duplicate business lines retain distinct sales_line_id primary keys; duplicates are assessed across all non-key sales fields.",
+    "Three high unit_price_at_sale values exceed four times list price. The Step 8 DDL has no upper price cap, so these remain valid-range statistical outliers.",
+    "All people-like names and place names are fictional labels; no customer names, IDs, or real personal data are generated."
+  ]
+}

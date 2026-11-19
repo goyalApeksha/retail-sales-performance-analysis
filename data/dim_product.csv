@@ -1,0 +1,21 @@
+﻿product_id,sku,product_name,category,subcategory,list_price,standard_unit_cost,active_flag
+P001,SYN-0001,Aarohi 5G Phone,Electronics,Smartphone,25455.88,13946.76,1
+P002,SYN-0002,Madhav Wireless Buds,Electronics,Audio,3297.47,2278.74,1
+P003,SYN-0003,Tara Fast Charger,Electronics,Accessories,1312.58,761.88,1
+P004,SYN-0004,Ishaan LED Lamp,Electronics,Appliances,2265.44,1330.87,1
+P005,SYN-0005,Meera Cotton Kurta,Clothing,Ethnic Wear,1880.76,1168.3,1
+P006,SYN-0006,Kabir Linen Shirt,Clothing,Casual Wear,1686.37,1181.37,1
+P007,SYN-0007,Saanvi Walking Sandal,Clothing,Footwear,1264.49,746.22,1
+P008,SYN-0008,Reyansh Woven Scarf,Clothing,Accessories,692.46,374.44,1
+P009,SYN-0009,Anaya Basmati Rice 5kg,Grocery,Staples,634.12,451.06,1
+P010,SYN-0010,Vihaan Masala Box,Grocery,Spices,311.13,197.98,1
+P011,SYN-0011,Kiara Filter Coffee Pack,Grocery,Beverages,388.32,275.75,1
+P012,SYN-0012,Arjun Millet Snack Pack,Grocery,Snacks,181.0,128.46,1
+P013,SYN-0013,Diya Steel Cook Set,Home & Kitchen,Cookware,2648.3,1446.18,1
+P014,SYN-0014,Aarav Stackable Jars,Home & Kitchen,Storage,857.85,580.78,1
+P015,SYN-0015,Myra Cotton Bedsheet,Home & Kitchen,Textiles,1718.29,1033.61,1
+P016,SYN-0016,Rohan Ceramic Planter,Home & Kitchen,Decor,779.83,498.46,1
+P017,SYN-0017,Ira Yoga Mat,Sports,Fitness,945.13,587.09,1
+P018,SYN-0018,Dev Cricket Bat,Sports,Outdoor,2314.29,1299.36,1
+P019,SYN-0019,Nisha Training Bands,Sports,Fitness,538.55,339.73,1
+P020,SYN-0020,Aditya Trek Bottle,Sports,Outdoor,731.38,449.95,1

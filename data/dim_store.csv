@@ -1,0 +1,11 @@
+﻿store_id,store_code,store_name,region,city,active_flag
+ST001,SYN-ST-01,Aarohi Indrapur Bazaar,North,Indrapur,1
+ST002,SYN-ST-02,Madhav Nandipur Market,North,Nandipur,1
+ST003,SYN-ST-03,Tara Suryanagar Bazaar,South,Suryanagar,1
+ST004,SYN-ST-04,Ishaan Devnagar Market,South,Devnagar,1
+ST005,SYN-ST-05,Meera Kesavgarh Bazaar,East,Kesavgarh,1
+ST006,SYN-ST-06,Kabir Shantipur Market,East,Shantipur,1
+ST007,SYN-ST-07,Saanvi Navapur Bazaar,West,Navapur,1
+ST008,SYN-ST-08,Reyansh Vasantgarh Market,West,Vasantgarh,1
+ST009,SYN-ST-09,Anaya Ratanpur Bazaar,Central,Ratanpur,1
+ST010,SYN-ST-10,Vihaan Padmapur Market,Central,Padmapur,1

@@ -1,0 +1,52 @@
+RETAIL SALES PERFORMANCE ANALYSIS - DATA VALIDATION REPORT
+Seed: 42
+Schema source: docs/08_Database_Design.xlsx | SQLite_DDL
+Overall status: PASS
+
+SQLite row counts (expected / actual):
+  dim_product: 20 / 20
+  dim_store: 10 / 10
+  fact_sales: 240 / 240
+  fact_sales_target: 4800 / 4800
+
+Foreign key check: PASS (enforcement enabled during load: True)
+Range, allowed-value, NOT NULL, and key checks:
+  PASS - product_prices_nonnegative
+  PASS - sales_dates_valid_and_in_range
+  PASS - sales_quantity_positive
+  PASS - sales_prices_costs_nonnegative
+  PASS - discount_between_zero_and_0_80
+  PASS - returns_and_active_flags_binary
+  PASS - targets_valid_month_and_nonnegative
+  PASS - allowed_categories_segments_payments_regions
+  PASS - required_columns_not_null
+  PASS - primary_and_unique_keys
+
+Joined view: vw_sales_analysis | 240 rows | 35 columns
+
+Intentional raw-data quality issues:
+  Missing payment_method: 6 / 240 rows (2.5%); IDs [14, 23, 70, 102, 170, 188]
+  Database handling: imputed to mode 'UPI' to satisfy Step 8 NOT NULL and CHECK constraints.
+  Duplicate business groups: 3 -> [[8, 238], [79, 239], [153, 240]]
+  Statistical outliers (unit price / list price): [{'sales_line_id': 44, 'unit_price_at_sale': 3602.97, 'list_price': 857.85, 'ratio_to_list_price': 4.2}, {'sales_line_id': 101, 'unit_price_at_sale': 6069.55, 'list_price': 1264.49, 'ratio_to_list_price': 4.8}, {'sales_line_id': 222, 'unit_price_at_sale': 140007.34, 'list_price': 25455.88, 'ratio_to_list_price': 5.5}]
+
+Patterns built into the synthetic data:
+  - 2024 sales use a modest year-over-year quantity and price uplift.
+  - November and December have higher unit volumes and a larger Electronics share.
+  - North and West store sales have higher propensity than other regions.
+  - Discounts are more frequent in March, July, and August; greater discounts mechanically reduce calculated gross margin.
+
+Observed pattern metrics (for inspection, not causal inference):
+  net_revenue_by_year_inr: {'2023': 833695.31, '2024': 1184141.66}
+  net_revenue_yoy_change_pct: 42.0
+  q4_average_net_revenue_per_line_inr: 20176.92
+  non_q4_average_net_revenue_per_line_inr: 4741.82
+  q4_sales_line_count: 57
+  non_q4_sales_line_count: 183
+  q4_electronics_share_of_net_revenue_pct: 88.9
+  non_q4_electronics_share_of_net_revenue_pct: 57.7
+  sales_line_count_by_region: {'Central': 49, 'East': 41, 'North': 59, 'South': 41, 'West': 50}
+  discount_vs_margin_pearson_correlation: -0.52
+  interpretation_note: Generated signals are descriptive; 240 lines and three intentional price outliers do not support causal claims.
+
+Interpretation: raw CSV/XLSX are cleaning-practice inputs; app.db is loaded with the exact constrained Step 8 schema.
