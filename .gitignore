@@ -24,3 +24,9 @@ htmlcov/
 *.db-journal
 .DS_Store
 Thumbs.db
+
+# Scratch and intermediate scripts
+scratch/
+dump_doc.py
+inspect_project_sources.py
+
