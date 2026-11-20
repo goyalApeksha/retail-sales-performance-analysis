@@ -30,3 +30,5 @@ scratch/
 dump_doc.py
 inspect_project_sources.py
 
+
+*.zip
