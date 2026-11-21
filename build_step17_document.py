@@ -12,7 +12,7 @@ from docx.enum.table import WD_ALIGN_VERTICAL, WD_ROW_HEIGHT_RULE, WD_TABLE_ALIG
 from docx.enum.text import WD_ALIGN_PARAGRAPH
 from docx.oxml import OxmlElement
 from docx.oxml.ns import qn
-from docx.shared import Cm, Pt, RGBColor
+from docx.shared import Cm, Inches, Pt, RGBColor
 from openpyxl import load_workbook
 
 
@@ -27,16 +27,16 @@ BORDER = "BFBFBF"
 WHITE = "FFFFFF"
 TABLE_WIDTH = 9638
 
-PROJECT_ID = "[To confirm]"
+PROJECT_ID = "P048"
 TITLE = "Retail Sales Performance Analysis"
 DOMAIN = "Data Analytics"
 LEARNER = "Apeksha Goel"
 ROLL = "2500320140030"
-MENTOR = "Kalpana Dwivedi"
-BATCH = "[To confirm]"
-GITHUB_URL = "[To confirm]"
-LIVE_URL = "[To confirm]"
-VERSION_DATE = "v1.0 - 19/11/2026"
+MENTOR = "Mr. Dinesh"
+BATCH = "ABES_OND26_MCA 2nd Year_Data Analytics_Batch 01 (2025-2027)"
+GITHUB_URL = "https://github.com/goyalApeksha/retail-sales-performance-analysis.git"
+LIVE_URL = "https://retail-sales-performance-analysis.streamlit.app/Performance_Compare"
+VERSION_DATE = "v1.0 - 21/11/2026"
 
 
 def clean(value: object) -> str:
@@ -385,8 +385,13 @@ def configure_document(document: Document) -> None:
 
 
 def cover(document: Document) -> None:
+    logo_path = DOCS / "abes_logo.png"
+    if logo_path.exists():
+        p_logo = document.add_paragraph()
+        format_paragraph(p_logo, before=0, after=4)
+        run_logo = p_logo.add_run()
+        run_logo.add_picture(str(logo_path), width=Inches(2.4))
     add_body(document, "HCLTech Career Shaper Programme | ABES Engineering College, Ghaziabad", bold=True, colour=ACCENT, after=5)
-    add_body(document, "[Insert ABES logo here]", italic=True, colour=GREY, after=5)
     paragraph = document.add_paragraph()
     format_paragraph(paragraph, before=70, after=6)
     run = paragraph.add_run("PROJECT DOCUMENT")
@@ -605,6 +610,15 @@ def main() -> None:
     add_note(document, "The screen-by-screen design, built first as an HTML framework, then in Streamlit.")
     add_table(document, ["UI-ID", "Screen", "Purpose", "Components", "Filters", "User stories"], [[r[0], r[1], r[2], r[3], r[4], r[5]] for r in ui_rows[1:]], [800, 1200, 1700, 2900, 1700, 1338])
 
+    dash_path = DOCS / "dashboard_screenshot.png"
+    if dash_path.exists():
+        p_img = document.add_paragraph()
+        p_img.alignment = WD_ALIGN_PARAGRAPH.CENTER
+        format_paragraph(p_img, before=12, after=4)
+        run_img = p_img.add_run()
+        run_img.add_picture(str(dash_path), width=Inches(6.2))
+        add_body(document, "Figure 10.1: Live Deployed Production Streamlit Dashboard — UI-01 Overview and KPIs (Live URL: https://retail-sales-performance-analysis.streamlit.app/Performance_Compare)", italic=True, colour=GREY, after=12)
+
     document.add_page_break()
     add_h1(document, "Appendix A - Prompt to generate this document")
     add_label(document, "MY PREFERENCES", accent=True)
@@ -660,7 +674,7 @@ RULES: Do one step only when I send STEP n. Keep stable IDs. List sensible assum
     reopened = Document(OUT)
     assert any(p.text == "1. Project Description" for p in reopened.paragraphs)
     assert len(reopened.tables) >= 15
-    assert "[Insert ABES logo here]" in "\n".join(p.text for p in reopened.paragraphs)
+    assert PROJECT_ID in "\n".join(p.text for p in reopened.paragraphs)
     print(f"Saved: {OUT}")
     print(f"Saved: {DOCS / 'RSPA_Project_Document.docx'}")
     print(f"Saved: {DOCS / '17_Project_Document_RetailSales_ApekshaGoel.docx'}")

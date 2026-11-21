@@ -1,6 +1,11 @@
-# Retail Sales Performance Analysis
+# Retail Sales Performance Analysis (Project ID: P048)
 
-ABES MCA 2nd Year Data Analytics project by Apeksha Goel (Roll 2500320140030), mentored by Kalpana Dwivedi. The project uses a reproducible **synthetic-only** retail-sales dataset. It contains no real customer or personal data.
+ABES MCA 2nd Year Data Analytics project by **Apeksha Goel** (Roll No: 2500320140030), mentored by **Mr. Dinesh**.  
+**Programme / Batch:** MCA 2nd Year Data Analytics — Batch `ABES_OND26_MCA 2nd Year_Data Analytics_Batch 01` (Academic Session: 2025–2027)  
+**Live Deployed App (Streamlit Community Cloud):** [https://retail-sales-performance-analysis.streamlit.app/Performance_Compare](https://retail-sales-performance-analysis.streamlit.app/Performance_Compare)  
+**GitHub Repository:** [https://github.com/goyalApeksha/retail-sales-performance-analysis.git](https://github.com/goyalApeksha/retail-sales-performance-analysis.git)  
+
+The project uses a reproducible **synthetic-only** retail-sales dataset. It contains no real customer or personal data.
 
 ## What the app answers
 
