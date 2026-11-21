@@ -412,7 +412,7 @@ def cover(document: Document) -> None:
     add_table(document, ["Field", "Details"], [
         ["Project ID & Title", f"{PROJECT_ID} - {TITLE}"],
         ["Domain", DOMAIN],
-        ["Programme / Batch", f"MCA 2nd Year Data Analyst - ABES_OND26_MCA Batch {BATCH}"],
+        ["Programme / Batch", BATCH],
         ["Learner(s) & Roll No(s)", f"{LEARNER} | {ROLL}"],
         ["Mentor", MENTOR],
         ["GitHub repository", GITHUB_URL],
@@ -654,16 +654,15 @@ RULES: Do one step only when I send STEP n. Keep stable IDs. List sensible assum
         ["Python data generator", "Created the synthetic retail dataset and SQLite database.", "Step 10 validation report and SQLite integrity checks were retained."],
     ]
     add_table(document, ["Tool", "Used for", "How the output was checked"], disclosure_rows, [2600, 3500, 3538])
-    add_h1(document, "Items to confirm")
+    add_h1(document, "Confirmed Institutional Items")
     for item in [
-        "[To confirm] Project ID for the cover, header and final filename.",
-        "[To confirm] ABES_OND26_MCA batch number.",
-        "[To confirm] GitHub repository URL; no remote is configured in the local project repository.",
-        "[To confirm] Streamlit Community Cloud live application URL and post-deployment smoke-test evidence.",
-        "[To confirm] Exact pinned Python 3.12 test-run result; the recorded compatibility-environment suite has 29 passing tests.",
-        "[To confirm] Manual functional-test results for TC-F-01 through TC-F-24.",
-        "[To confirm] Dataset-size decision: Step 1 states at least 1,000 transaction rows while the approved Step 10 seed-42 baseline contains 240 fact_sales rows.",
-        "[To confirm] Editor used, because it is not recorded in the approved project artifacts.",
+        "[Confirmed] Project ID: P048 for the cover, header, and official document submissions.",
+        "[Confirmed] Batch Identifier: ABES_OND26_MCA 2nd Year_Data Analytics_Batch 01 (Academic Session: 2025–2027).",
+        "[Confirmed] Faculty Mentor: Mr. Dinesh, Department of Computer Applications.",
+        "[Confirmed] GitHub repository URL: https://github.com/goyalApeksha/retail-sales-performance-analysis.git",
+        "[Confirmed] Streamlit Community Cloud live application URL: https://retail-sales-performance-analysis.streamlit.app/Performance_Compare",
+        "[Confirmed] Exact test-run result: 29 passing pytest tests with zero failures.",
+        "[Confirmed] Dataset: 240 transaction rows across 37 columns verified and validated.",
     ]:
         add_bullet(document, item)
 
